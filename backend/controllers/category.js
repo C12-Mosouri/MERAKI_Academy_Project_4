@@ -4,7 +4,7 @@ const SubCategoryModel = require("../models/subCategory");
 const createCategory = (req, res) => {
   const { name, img } = req.body;
   console.log(name);
-  newCategory = new CategoryModel({
+  const newCategory = new CategoryModel({
     name,
     img,
   });

@@ -11,7 +11,7 @@ const register = (req, res) => {
     country,
     email,
     password,
-    role: "",
+    role: "6702c946353555ec445cf066",
   });
 
   user
@@ -61,9 +61,11 @@ const login = (req, res) => {
         }
         const payload = {
           userId: result._id,
+          country: result.country,
+          age: result.age,
         };
         const options = {
-          expiresIn: "60m",
+          expiresIn: "120m",
         };
         const token = jwt.sign(payload, process.env.SECRET, options);
         res.status(200).json({

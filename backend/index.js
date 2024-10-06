@@ -3,6 +3,7 @@ const cors = require("cors");
 const rolesRouter = require("./routes/roles");
 const usersRouter = require("./routes/users");
 const categoryRouter = require("./routes/category");
+const productRouter = require("./routes/product");
 require("dotenv").config();
 require("./models/db");
 
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use("/role", rolesRouter);
 app.use("/users", usersRouter);
 app.use("/category", categoryRouter);
+app.use("/product", productRouter);
 // Handles any other endpoints [unassigned - endpoints]
 app.use("*", (req, res) => res.status(404).json("NO content at this path"));
 

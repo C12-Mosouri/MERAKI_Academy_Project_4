@@ -31,7 +31,7 @@ const createSubCategory = (req, res) => {
   newSubCategory = new SubCategoryModel({
     name,
     img,
-    id,
+    categoryId,
   });
   newSubCategory
     .save()

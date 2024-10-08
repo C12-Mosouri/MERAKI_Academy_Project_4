@@ -4,6 +4,7 @@ const rolesRouter = require("./routes/roles");
 const usersRouter = require("./routes/users");
 const categoryRouter = require("./routes/category");
 const productRouter = require("./routes/product");
+const cartRouter = require("./routes/cart");
 require("dotenv").config();
 require("./models/db");
 
@@ -17,6 +18,7 @@ app.use("/role", rolesRouter);
 app.use("/users", usersRouter);
 app.use("/category", categoryRouter);
 app.use("/product", productRouter);
+app.use("/cart", cartRouter);
 // Handles any other endpoints [unassigned - endpoints]
 app.use("*", (req, res) => res.status(404).json("NO content at this path"));
 

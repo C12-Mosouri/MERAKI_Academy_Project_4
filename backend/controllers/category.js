@@ -26,7 +26,7 @@ const createCategory = (req, res) => {
     });
 };
 const createSubCategory = (req, res) => {
-  const { name, img, id } = req.body;
+  const { name, img, categoryId } = req.body;
   console.log(name);
   newSubCategory = new SubCategoryModel({
     name,

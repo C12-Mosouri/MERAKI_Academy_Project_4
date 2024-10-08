@@ -50,5 +50,67 @@ const getAllProducts = (req, res) => {
       });
     });
 };
+const updateProductById = (req, res) => {
+  const id = req.params.id;
+  const updateProduct = req.body;
+  ProductModel.findByIdAndUpdate({ _id: id }, req.body, { new: true })
+    .then((result) => {
+      res.status(202).json({
+        success: true,
+        message: `Product Updated`,
+        result: result,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: "Server Error",
+        err: err.message,
+      });
+    });
+};
+const deleteProductById = (req, res) => {
+  const id = req.params.id;
+  ProductModel.findByIdAndDelete(id)
+    .then((result) => {
+      res.status(202).json({
+        success: true,
+        message: `Product Deleted`,
+        result: result,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: "Server Error",
+        err: err.message,
+      });
+    });
+};
 
-module.exports = { addNewProduct, getAllProducts };
+const getProductById = (req, res) => {
+  const id = req.params.id;
+  const updateProduct = req.body;
+  ProductModel.findById({ _id: id }, req.body, { new: true })
+    .then((result) => {
+      res.status(202).json({
+        success: true,
+        message: `Product Found`,
+        result: result,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: "Server Error",
+        err: err.message,
+      });
+    });
+};
+module.exports = {
+  addNewProduct,
+  getAllProducts,
+  updateProductById,
+  deleteProductById,
+  getProductById,
+};

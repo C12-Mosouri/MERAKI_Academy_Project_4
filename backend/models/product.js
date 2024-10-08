@@ -9,6 +9,7 @@ const productSchema = new mongoose.Schema({
   rate: { type: Number },
   description: { type: String },
   subCategoryId: { type: mongoose.Schema.Types.ObjectId, ref: "SubCategory" },
+  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
 });
 
 module.exports = mongoose.model("Product", productSchema);

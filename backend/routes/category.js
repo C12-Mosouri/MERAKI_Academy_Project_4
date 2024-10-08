@@ -8,6 +8,8 @@ const {
   getAllSubCategorys,
   updateCategoryById,
   updateSubCategoryById,
+  deleteCategoryById,
+  deleteSubCategoryById,
 } = require("../controllers/category");
 
 categoryRouter.post("/", createCategory);
@@ -16,6 +18,8 @@ categoryRouter.get("/", getAllCategorys);
 categoryRouter.get("/sub", getAllSubCategorys);
 categoryRouter.put("/:id", updateCategoryById);
 categoryRouter.put("/sub/:id", updateSubCategoryById);
+categoryRouter.delete("/:id", deleteCategoryById);
+categoryRouter.delete("/:id", deleteSubCategoryById);
 /* categoryRouter.post("/",()=>{
     console.log("hello");
 }) */

@@ -108,12 +108,49 @@ const updateCategoryById = (req, res) => {
 
 const updateSubCategoryById = (req, res) => {
   const id = req.params.id;
-  const updateCategory = req.body;
+  const updateSubCategory = req.body;
   SubCategoryModel.findByIdAndUpdate({ _id: id }, req.body, { new: true })
     .then((result) => {
       res.status(202).json({
         success: true,
         message: `SubCategory Updated`,
+        result: result,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: "Server Error",
+        err: err.message,
+      });
+    });
+};
+
+const deleteCategoryById = (req, res) => {
+  const id = req.params.id;
+  CategoryModel.findByIdAndDelete(id)
+    .then((result) => {
+      res.status(202).json({
+        success: true,
+        message: `Category Deleted`,
+        result: result,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: "Server Error",
+        err: err.message,
+      });
+    });
+};
+const deleteSubCategoryById = (req, res) => {
+  const id = req.params.id;
+  SubCategoryModel.findByIdAndDelete(id)
+    .then((result) => {
+      res.status(202).json({
+        success: true,
+        message: `SubCategory Deleted`,
         result: result,
       });
     })
@@ -132,4 +169,6 @@ module.exports = {
   getAllSubCategorys,
   updateCategoryById,
   updateSubCategoryById,
+  deleteCategoryById,
+  deleteSubCategoryById,
 };

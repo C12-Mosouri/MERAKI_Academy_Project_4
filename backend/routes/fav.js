@@ -1,6 +1,8 @@
 const express = require("express");
-const { createFav } = require("../controllers/fav");
+const { createFav, getAllMyFav } = require("../controllers/fav");
+const authentication = require("../middleware/authentication");
 const favRouter = express.Router();
 
-favRouter.post("/", createFav);
+favRouter.post("/", authentication, createFav);
+favRouter.get("/", authentication, getAllMyFav);
 module.exports = favRouter;

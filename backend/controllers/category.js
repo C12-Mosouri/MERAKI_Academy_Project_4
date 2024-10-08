@@ -51,4 +51,85 @@ const createSubCategory = (req, res) => {
     });
 };
 
-module.exports = { createCategory, createSubCategory };
+const getAllCategorys = (req, res) => {
+  CategoryModel.find({})
+    .then((result) => {
+      res.status(200).json({
+        success: true,
+        message: "All Categorys Are Here",
+        Category: result,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: "Server Error",
+        err: err.message,
+      });
+    });
+};
+
+const getAllSubCategorys = (req, res) => {
+  SubCategoryModel.find({})
+    .then((result) => {
+      res.status(200).json({
+        success: true,
+        message: "All SubCategorys Are Here",
+        Category: result,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: "Server Error",
+        err: err.message,
+      });
+    });
+};
+const updateCategoryById = (req, res) => {
+  const id = req.params.id;
+  const updateCategory = req.body;
+  CategoryModel.findByIdAndUpdate({ _id: id }, req.body, { new: true })
+    .then((result) => {
+      res.status(202).json({
+        success: true,
+        message: `Category Updated`,
+        result: result,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: "Server Error",
+        err: err.message,
+      });
+    });
+};
+
+const updateSubCategoryById = (req, res) => {
+  const id = req.params.id;
+  const updateCategory = req.body;
+  SubCategoryModel.findByIdAndUpdate({ _id: id }, req.body, { new: true })
+    .then((result) => {
+      res.status(202).json({
+        success: true,
+        message: `SubCategory Updated`,
+        result: result,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: "Server Error",
+        err: err.message,
+      });
+    });
+};
+module.exports = {
+  createCategory,
+  createSubCategory,
+  getAllCategorys,
+  getAllSubCategorys,
+  updateCategoryById,
+  updateSubCategoryById,
+};

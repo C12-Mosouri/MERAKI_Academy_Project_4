@@ -1,10 +1,10 @@
 const CartModel = require("../models/cart");
 
 const createCart = (req, res) => {
-  const { product, totalPrice, userId } = req.body;
+  const { userId } = req.token.userId;
+  const { product } = req.body;
   const newCart = new CartModel({
     product,
-    totalPrice,
     userId,
   });
   newCart
@@ -24,5 +24,24 @@ const createCart = (req, res) => {
       });
     });
 };
-
-module.exports = { createCart };
+const getAllMyCart = (req, res) => {
+  CartModel.find({})
+    .populate("product userId")
+    // .populate("userId","-role")
+    .exec()
+    .then((result) => {
+      res.status(200).json({
+        success: true,
+        message: "All MyCart Are Here",
+        Category: result,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: "Server Error",
+        err: err.message,
+      });
+    });
+};
+module.exports = { createCart, getAllMyCart };

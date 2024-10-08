@@ -1,3 +1,4 @@
+const product = require("../models/product");
 const ProductModel = require("../models/product");
 
 const addNewProduct = (req, res) => {
@@ -30,5 +31,24 @@ const addNewProduct = (req, res) => {
       });
     });
 };
+const getAllProducts = (req, res) => {
+  ProductModel.find({})
+    .populate("subCategoryId")
+    .exec()
+    .then((result) => {
+      res.status(200).json({
+        success: true,
+        message: "All Product Are Here",
+        Category: result,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: "Server Error",
+        err: err.message,
+      });
+    });
+};
 
-module.exports = {addNewProduct}
+module.exports = { addNewProduct, getAllProducts };

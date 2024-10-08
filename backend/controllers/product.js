@@ -33,7 +33,7 @@ const addNewProduct = (req, res) => {
 };
 const getAllProducts = (req, res) => {
   ProductModel.find({})
-    .populate("subCategoryId")
+    .populate("subCategoryId comments")
     .exec()
     .then((result) => {
       res.status(200).json({

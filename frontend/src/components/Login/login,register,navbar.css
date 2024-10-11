@@ -1,0 +1,13 @@
+.register{
+    border: 5px red solid;
+    width: fit-content;
+    padding: 50px;
+    margin: auto;
+}
+.login{
+    border: 5px red solid;
+    width: fit-content;
+    padding: 50px;
+    margin: auto;
+    margin-bottom: 10px;
+}

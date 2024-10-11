@@ -3,6 +3,7 @@ import App from "../../App";
 import axios from "axios";
 // import { useNavigate } from "react-router-dom";
 import { tokenContext } from "../../App";
+import "./login,register,navbar.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");

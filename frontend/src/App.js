@@ -5,6 +5,7 @@ import Login from "./components/Login/Login";
 import Register from "./components/Login/Register";
 import Category from "./components/Categorys/category";
 import SubCategorys from "./components/SubCategorys/subcategory";
+import Product from "./components/Product/product";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
@@ -79,7 +80,11 @@ const App = () => {
                         Another action
                       </NavDropdown.Item>
                       <NavDropdown.Divider />
-                      <NavDropdown.Item href="#action5">
+                      <NavDropdown.Item
+                        onClick={() => {
+                          navigate("/product");
+                        }}
+                      >
                         Something else here
                       </NavDropdown.Item>
                     </NavDropdown>
@@ -136,6 +141,7 @@ const App = () => {
             <Route path="/register" element={<Register />} />
             <Route path="/category" element={<Category />} />
             <Route path="/category/sub" element={<SubCategorys />} />
+            <Route path="/product" element={<Product />} />
           </Routes>
         </div>
       </tokenContext.Provider>

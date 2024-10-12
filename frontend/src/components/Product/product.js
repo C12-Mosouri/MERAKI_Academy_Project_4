@@ -25,7 +25,7 @@ const Product = () => {
             <h2>{ele.price + " : JOD"}</h2>
             <img className="img" src={ele.img} />
             <h3>{"Size : " + ele.size}</h3>
-            <h3>{"Rate : "+ele.rate}</h3>
+            <h3>{"Rate : " + ele.rate}</h3>
           </>
         );
       })}

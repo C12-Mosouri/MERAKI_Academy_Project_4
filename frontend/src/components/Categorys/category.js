@@ -3,17 +3,17 @@ import axios from "axios";
 import "./category.css";
 
 const Category = () => {
-  const [categoryName, setCategoryName] = useState([]);
-  const [categoryImg, setCategoryImg] = useState("");
+  const [category, setCategory] = useState([]);
+  // const [categoryImg, setCategoryImg] = useState("");
   useEffect(() => {
     console.log("testFromCaregotys");
     axios
       .get("http://localhost:5000/category")
       .then((res) => {
         console.log(res.data);
-        setCategoryName(res.data.Category);
-        setCategoryImg(res.data.Category);
-        console.log(categoryImg)
+        setCategory(res.data.Category);
+        // setCategoryImg(res.data.Category);
+        // console.log(categoryImg)
       })
       .catch((err) => {
         console.log(err);
@@ -22,7 +22,7 @@ const Category = () => {
   return (
     <>
       <div>category</div>
-      {categoryName.map((ele, i) => {
+      {category.map((ele, i) => {
         return (
           <>
             <h1>{ele.name}</h1>

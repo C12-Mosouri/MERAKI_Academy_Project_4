@@ -4,6 +4,7 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import Login from "./components/Login/Login";
 import Register from "./components/Login/Register";
 import Category from "./components/Categorys/category";
+import SubCategorys from "./components/SubCategorys/subcategory";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
@@ -52,6 +53,20 @@ const App = () => {
                     >
                       Category
                     </Nav.Link>
+                    <Nav.Link
+                      onClick={() => {
+                        navigate("/category/sub");
+                      }}
+                    >
+                      SubCategorys
+                    </Nav.Link>
+                    <NavDropdown
+                      title="Categorys"
+                      id={`offcanvasNavbarDropdown-expand-${expand}`}
+                    >
+                      <NavDropdown.Item></NavDropdown.Item>
+                    </NavDropdown>
+
                     <Nav.Link href="#action2">Link</Nav.Link>
                     <NavDropdown
                       title="Dropdown"
@@ -120,6 +135,7 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/category" element={<Category />} />
+            <Route path="/category/sub" element={<SubCategorys />} />
           </Routes>
         </div>
       </tokenContext.Provider>

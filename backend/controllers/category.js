@@ -162,6 +162,45 @@ const deleteSubCategoryById = (req, res) => {
       });
     });
 };
+
+const getCategoryById = (req, res) => {
+  const id = req.params.id;
+  CategoryModel.findById({ _id: id }, req.body, { new: true })
+    .then((result) => {
+      res.status(202).json({
+        success: true,
+        message: `Category Found`,
+        result: result,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: "Server Error",
+        err: err.message,
+      });
+    });
+};
+
+const getSubCategoryById = (req, res) => {
+  const id = req.params.id;
+  SubCategoryModel.findById({ _id: id }, req.body, { new: true })
+    .then((result) => {
+      res.status(202).json({
+        success: true,
+        message: `Category Found`,
+        result: result,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: "Server Error",
+        err: err.message,
+      });
+    });
+};
+
 module.exports = {
   createCategory,
   createSubCategory,
@@ -171,4 +210,6 @@ module.exports = {
   updateSubCategoryById,
   deleteCategoryById,
   deleteSubCategoryById,
+  getCategoryById,
+  getSubCategoryById,
 };

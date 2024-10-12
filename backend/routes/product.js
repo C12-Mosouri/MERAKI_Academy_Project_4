@@ -9,7 +9,7 @@ const {
   getProductById,
 } = require("../controllers/product");
 const authentication = require("../middleware/authentication");
-const { createNewComment } = require("../controllers/coomments");
+const { createNewComment } = require("../controllers/comments");
 
 productRouter.post("/", addNewProduct);
 productRouter.get("/", getAllProducts);

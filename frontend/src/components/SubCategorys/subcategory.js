@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate, useParams } from "react-router-dom";
 
 const SubCategorys = () => {
+  const navigate = useNavigate();
   const [subCategory, setSubCategory] = useState([]);
+  const [subCategoryId, setSubCategoryId] = useState("");
+  const { id } = useParams();
+  console.log(id);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/category/sub")
+      .get(`http://localhost:5000/category/sub/${id}`)
       .then((res) => {
-        console.log(res.data.Category);
-        // setSubCategory(res.data.Category);
-        const subCategorys = res.data.Category;
-        subCategorys.map((ele) => {
-          console.log(ele);
-        });
+        console.log(res.data.result);
+        setSubCategory(res.data.result);
       })
       .catch((err) => {
         console.log(err);
@@ -24,7 +25,15 @@ const SubCategorys = () => {
       {subCategory.map((ele) => {
         return (
           <>
-            <h1>{ele.name}</h1>
+            <h1
+              onClick={() => {
+                const id = ele._id;
+                setSubCategoryId(ele._id);
+                navigate(`/product/${id}`);
+              }}
+            >
+              {ele.name}
+            </h1>
             <img className="img" src={ele.img} />
           </>
         );

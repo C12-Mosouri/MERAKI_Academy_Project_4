@@ -4,8 +4,10 @@ import axios from "axios";
 // import { useNavigate } from "react-router-dom";
 import { tokenContext } from "../../App";
 import "./login,register,navbar.css";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -60,7 +62,7 @@ const Login = () => {
       >
         Login
       </button>
-      {setUser ? <h1>{message}</h1> : <h1>{message}</h1>}
+      {user ? <h1>{message}{navigate("/category")}</h1> : <h1>{message}</h1>}
     </div>
 
     </>

@@ -107,10 +107,31 @@ const getProductById = (req, res) => {
       });
     });
 };
+
+const getProductBySubCategroyId = (req, res) => {
+  const id = req.params.id;
+  const updateProduct = req.body;
+  ProductModel.find({ subCategoryId: id }, req.body, { new: true })
+    .then((result) => {
+      res.status(202).json({
+        success: true,
+        message: `Product Found`,
+        result: result,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: "Server Error",
+        err: err.message,
+      });
+    });
+};
 module.exports = {
   addNewProduct,
   getAllProducts,
   updateProductById,
   deleteProductById,
   getProductById,
+  getProductBySubCategroyId,
 };

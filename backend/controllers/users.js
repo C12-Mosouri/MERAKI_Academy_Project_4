@@ -67,11 +67,19 @@ const login = (req, res) => {
         const options = {
           expiresIn: "120m",
         };
+        /*    const addHours = (date, hours) => {
+          const hoursToAdd = hours * 60 * 60 * 1000;
+          date.setTime(date.getTime() + hoursToAdd);
+          return date;
+        };
+        const date = new Date(date.now);
+        const newDate = addHours(date, 2); */
         const token = jwt.sign(payload, process.env.SECRET, options);
         res.status(200).json({
           success: true,
           message: `Valid Login Credentials`,
           token: token,
+          // expirDate: newDate,
         });
       } catch (error) {
         throw new Error(error.message);

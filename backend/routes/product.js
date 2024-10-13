@@ -7,6 +7,7 @@ const {
   updateProductById,
   deleteProductById,
   getProductById,
+  getProductBySubCategroyId,
 } = require("../controllers/product");
 const authentication = require("../middleware/authentication");
 const { createNewComment } = require("../controllers/comments");
@@ -16,6 +17,6 @@ productRouter.get("/", getAllProducts);
 productRouter.put("/:id", updateProductById);
 productRouter.delete("/:id", deleteProductById);
 productRouter.post("/:id/comments", authentication, createNewComment);
-productRouter.get("/:id", getProductById);
-
+productRouter.get("/:id/byproductid", getProductById);
+productRouter.get("/:id",  getProductBySubCategroyId);
 module.exports = productRouter;

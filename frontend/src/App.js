@@ -67,8 +67,8 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/category" element={<Category />} />
-            <Route path="/category/sub" element={<SubCategorys />} />
-            <Route path="/product" element={<Product />} />
+            <Route path="/category/sub/:id" element={<SubCategorys />} />
+            <Route path="/product/:id" element={<Product />} />
           </Routes>
         </div>
       </tokenContext.Provider>

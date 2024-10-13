@@ -79,6 +79,7 @@ const login = (req, res) => {
           success: true,
           message: `Valid Login Credentials`,
           token: token,
+          userId: result._id,
           // expirDate: newDate,
         });
       } catch (error) {

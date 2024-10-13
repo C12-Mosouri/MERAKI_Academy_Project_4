@@ -6,7 +6,7 @@ import { tokenContext } from "../../App";
 const Product = () => {
   const [product, setProduct] = useState([]);
   const { id } = useParams();
-  const { token } = useContext(tokenContext);
+  const { token, userId } = useContext(tokenContext);
   useEffect(() => {
     axios
       .get(`http://localhost:5000/product/${id}`)
@@ -17,14 +17,14 @@ const Product = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [token]);
+  }, []);
   return (
     <>
       <div>product</div>
       {product.map((ele) => {
         return (
           <>
-            {token ? (
+            {localStorage.getItem("token") ? (
               <>
                 <h1>{ele.subCategoryId.name}</h1>
                 <h1>{ele.name}</h1>
@@ -38,7 +38,11 @@ const Product = () => {
                     console.log(token);
                     const productId = ele._id;
                     axios
-                      .post(`http://localhost:5000/fav`, productId)
+                      .post(
+                        `http://localhost:5000/fav`,
+                        { productId, userId },
+                        { headers: { Authorization: `Bearer ${token}` } }
+                      )
                       .then((result) => {
                         console.log(result);
                       })

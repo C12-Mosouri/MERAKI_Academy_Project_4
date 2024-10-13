@@ -6,6 +6,7 @@ import Register from "./components/Login/Register";
 import Category from "./components/Categorys/category";
 import SubCategorys from "./components/SubCategorys/subcategory";
 import Product from "./components/Product/product";
+import Fav from "./components/Fav/fav";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
@@ -20,6 +21,7 @@ export const tokenContext = createContext();
 const App = () => {
   const navigate = useNavigate();
   const [token, setToken] = useState("" || localStorage.getItem("token"));
+  const [userId, setUserId] = useState("" || localStorage.getItem("userId"));
   const [fav, setFav] = useState("");
   const [add, setAdd] = useState(true);
   return (
@@ -60,7 +62,7 @@ const App = () => {
         )}
       </h1>
       {/* <Button variant="primary">Click Me</Button> */}
-      <tokenContext.Provider value={{ token, setToken }}>
+      <tokenContext.Provider value={{ token, setToken, userId, setUserId }}>
         <div className="App">
           {/* <h1>Hello World!</h1> */}
           <Routes>
@@ -69,6 +71,7 @@ const App = () => {
             <Route path="/category" element={<Category />} />
             <Route path="/category/sub/:id" element={<SubCategorys />} />
             <Route path="/product/:id" element={<Product />} />
+            <Route path="/fav" element={<Fav />} />
           </Routes>
         </div>
       </tokenContext.Provider>

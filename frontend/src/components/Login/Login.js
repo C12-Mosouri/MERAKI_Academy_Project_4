@@ -13,6 +13,7 @@ const Login = () => {
   const { setToken } = useContext(tokenContext);
   // const navigate = useNavigate();
   return (
+    <>
     <div className="login">
       <h1>Login</h1>
       <br></br>
@@ -61,6 +62,8 @@ const Login = () => {
       </button>
       {setUser ? <h1>{message}</h1> : <h1>{message}</h1>}
     </div>
+
+    </>
   );
 };
 

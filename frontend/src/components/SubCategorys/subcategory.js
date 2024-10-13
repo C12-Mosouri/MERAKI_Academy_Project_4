@@ -8,7 +8,11 @@ const SubCategorys = () => {
       .get("http://localhost:5000/category/sub")
       .then((res) => {
         console.log(res.data.Category);
-        setSubCategory(res.data.Category);
+        // setSubCategory(res.data.Category);
+        const subCategorys = res.data.Category;
+        subCategorys.map((ele) => {
+          console.log(ele);
+        });
       })
       .catch((err) => {
         console.log(err);

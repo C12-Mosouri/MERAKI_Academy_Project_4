@@ -1,7 +1,7 @@
 const CartModel = require("../models/cart");
 
 const createCart = (req, res) => {
-  const { userId } = req.token.userId;
+  const userId = req.token.userId;
   const { product } = req.body;
   const newCart = new CartModel({
     product,
@@ -9,6 +9,7 @@ const createCart = (req, res) => {
   });
   newCart
     .save()
+    // .populate("productId")
     .then((result) => {
       res.status(200).json({
         success: true,
@@ -26,7 +27,7 @@ const createCart = (req, res) => {
 };
 const getAllMyCart = (req, res) => {
   CartModel.find({})
-    .populate("product userId")
+    .populate({ path: "product", populate: { path: "productId" } })
     // .populate("userId","-role")
     .exec()
     .then((result) => {

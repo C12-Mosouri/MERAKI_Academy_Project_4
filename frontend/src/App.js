@@ -7,6 +7,7 @@ import Category from "./components/Categorys/category";
 import SubCategorys from "./components/SubCategorys/subcategory";
 import Product from "./components/Product/product";
 import Fav from "./components/Fav/fav";
+import Cart from "./components/Cart/cart";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
@@ -72,6 +73,7 @@ const App = () => {
             <Route path="/category/sub/:id" element={<SubCategorys />} />
             <Route path="/product/:id" element={<Product />} />
             <Route path="/fav" element={<Fav />} />
+            <Route path="/cart" element={<Cart />} />
           </Routes>
         </div>
       </tokenContext.Provider>

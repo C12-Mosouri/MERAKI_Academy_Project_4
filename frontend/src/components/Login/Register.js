@@ -1,6 +1,7 @@
 import React, { useState, useContext, createContext, useEffect } from "react";
 import App from "../../App";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [firstName, setFirstName] = useState("");
@@ -11,6 +12,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [user, setUser] = useState("");
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   return (
     <div className="register">
@@ -94,6 +96,17 @@ const Register = () => {
         Sign In
       </button>
       {setUser ? <h1>{message}</h1> : <h1>{message}</h1>}
+      <h6>
+        {"Already have an account ? "}
+        <a
+          href=""
+          onClick={() => {
+            navigate("/login");
+          }}
+        >
+          Login
+        </a>
+      </h6>
     </div>
   );
 };

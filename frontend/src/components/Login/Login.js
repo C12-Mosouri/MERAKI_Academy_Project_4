@@ -71,6 +71,17 @@ const Login = () => {
         ) : (
           <h1>{message}</h1>
         )}
+        <h6>
+          {"Don't have an account ? "}
+          <a
+            href=""
+            onClick={() => {
+              navigate("/register");
+            }}
+          >
+            Register
+          </a>
+        </h6>
       </div>
     </>
   );

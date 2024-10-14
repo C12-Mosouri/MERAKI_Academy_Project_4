@@ -8,6 +8,7 @@ import SubCategorys from "./components/SubCategorys/subcategory";
 import Product from "./components/Product/product";
 import Fav from "./components/Fav/fav";
 import Cart from "./components/Cart/cart";
+import Home from "./components/Home/home";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
@@ -67,6 +68,7 @@ const App = () => {
         <div className="App">
           {/* <h1>Hello World!</h1> */}
           <Routes>
+            <Route path="/home" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/category" element={<Category />} />

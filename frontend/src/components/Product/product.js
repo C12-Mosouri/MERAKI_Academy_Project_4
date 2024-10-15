@@ -6,6 +6,7 @@ import { tokenContext } from "../../App";
 const Product = () => {
   const [product, setProduct] = useState([]);
   const [add, setAdd] = useState(true);
+  const [addToFav, setAddToFav] = useState([]);
   const { id } = useParams();
   const { token, userId } = useContext(tokenContext);
   const navigate = useNavigate();
@@ -32,13 +33,6 @@ const Product = () => {
                 <h1>{ele.name}</h1>
                 <h2>{ele.price + " : JOD"}</h2>
                 <img className="img" src={ele.img} />
-                <div class="row">
-                  <div class="col-xs-6 col-md-3">
-                    <a href="#" class="thumbnail">
-                      <img src="..." alt="..." />
-                    </a>
-                  </div>
-                </div>
                 <h3>{"Size : " + ele.size}</h3>
                 <h3>{"Rate : " + ele.rate}</h3>
                 <h1>
@@ -62,6 +56,7 @@ const Product = () => {
                           )
                           .then((result) => {
                             console.log(result);
+                            setAddToFav(result.data.Category._id);
                           })
                           .catch((err) => {
                             console.log(err);
@@ -82,11 +77,16 @@ const Product = () => {
                         setAdd(true);
                         console.log(ele);
                         axios
-                          .delete(`http://localhost:5000/fav/${ele._id}`, {
-                            headers: { Authorization: `Bearer ${token}` },
+                          .delete(`http://localhost:5000/fav`, {
+                            data: { addToFav: ele._id },
                           })
                           .then((res) => {
                             console.log(res);
+                            setAddToFav(
+                              product.filter((elem) => {
+                                return elem._id !== ele._id;
+                              })
+                            );
                           })
                           .catch((err) => {
                             console.log(err);

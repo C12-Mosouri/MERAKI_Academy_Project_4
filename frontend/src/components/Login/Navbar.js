@@ -138,7 +138,7 @@ const Navbars = () => {
                   <svg
                     className="cart"
                     onClick={() => {
-                      navigate("/register");
+                      navigate("/cart");
                     }}
                     xmlns="http://www.w3.org/2000/svg"
                     width="40"

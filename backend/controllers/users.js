@@ -94,8 +94,30 @@ const login = (req, res) => {
       });
     });
 };
+const getUserInfo = (req, res) => {
+  // const userId = req.token.userId;
+  // console.log(userId);
+  console.log(req);
+  usersModel
+    .find({})
+    .then((result) => {
+      res.status(202).json({
+        success: true,
+        message: `Product Found`,
+        result: result,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: "Server Error",
+        err: err.message,
+      });
+    });
+};
 
 module.exports = {
   register,
   login,
+  getUserInfo,
 };

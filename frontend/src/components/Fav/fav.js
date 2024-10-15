@@ -11,7 +11,7 @@ const Fav = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/fav`, {
+      .get(`http://localhost:5000/fav/${userId}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {

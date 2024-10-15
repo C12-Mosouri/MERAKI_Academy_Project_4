@@ -73,7 +73,7 @@ const removeFromFavByProductId = (req, res) => {
 const getFavByUserId = (req, res) => {
   const userId = req.token.userId;
   favModel
-    .find({})
+    .find({_id : userId})
     .populate("productId userId")
     // .populate("userId","-role")
     .exec()

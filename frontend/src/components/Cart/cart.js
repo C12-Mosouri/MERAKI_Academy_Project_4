@@ -31,6 +31,7 @@ const Cart = () => {
             <h2>{"Price : " + ele.product[0].productId.price + " JOD"}</h2>
             <h2>{"Size :" + ele.product[0].productId.size}</h2>
             <h2>{"Rate : " + ele.product[0].productId.rate}</h2>
+            <button>Remove From My Cart</button>
           </>
         );
       })}

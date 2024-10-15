@@ -153,8 +153,8 @@ const Navbars = () => {
                     onClick={() => {
                       {
                         localStorage.getItem("token")
-                        ? navigate("/home")
-                        : navigate("/login")
+                          ? navigate("/home")
+                          : navigate("/login");
                       }
                     }}
                     xmlns="http://www.w3.org/2000/svg"

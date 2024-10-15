@@ -1,8 +1,9 @@
 const { mongo, default: mongoose } = require("mongoose");
 const favModel = require("../models/favSchema");
 
+//updateFav not createFav
 const createFav = (req, res) => {
-  const { userId } = req.token.userId;
+  const userId = req.token.userId;
   const { productId } = req.body;
   const newFav = new favModel({
     productId,
@@ -69,8 +70,8 @@ const removeFromFavByProductId = (req, res) => {
     });
 };
 
-/* const getFavByUserId = (req, res) => {
-  const { userId } = req.token.userId;
+const getFavByUserId = (req, res) => {
+  const userId = req.token.userId;
   favModel
     .find({})
     .populate("productId userId")
@@ -90,9 +91,10 @@ const removeFromFavByProductId = (req, res) => {
         err: err.message,
       });
     });
-}; */
+};
 module.exports = {
   createFav,
   getAllMyFav,
   removeFromFavByProductId,
+  getFavByUserId,
 };

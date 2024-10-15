@@ -11,8 +11,8 @@ const Cart = () => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        console.log(res);
-        // setCart(res.data.Category);
+        console.log(res.data.Category);
+        setCart(res.data.Category);
       })
       .catch((err) => {
         console.log(err);
@@ -23,14 +23,14 @@ const Cart = () => {
     <>
       <div>My Cart</div>
       {cart.map((ele) => {
-        console.log(ele.product);
+        console.log(ele.product[0].productId);
         return (
           <>
-            {/* <h1>{ele.productId.name}</h1>
-            <img className="img" src={ele.productId.img} />
-            <h2>{"Price : " + ele.productId.price + " JOD"}</h2>
-            <h2>{"Size :" + ele.productId.size}</h2>
-            <h2>{"Rate : " + ele.productId.rate}</h2> */}
+            <h1>{ele.product[0].productId.name}</h1>
+            <img className="img" src={ele.product[0].productId.img} />
+            <h2>{"Price : " + ele.product[0].productId.price + " JOD"}</h2>
+            <h2>{"Size :" + ele.product[0].productId.size}</h2>
+            <h2>{"Rate : " + ele.product[0].productId.rate}</h2>
           </>
         );
       })}

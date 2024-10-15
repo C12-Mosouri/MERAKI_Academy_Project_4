@@ -10,5 +10,6 @@ const favRouter = express.Router();
 favRouter.post("/", authentication, createFav);
 favRouter.get("/", authentication, getAllMyFav);
 // favRouter.get("/fav/:id", authentication, getFavByUserId);
-favRouter.delete("/", removeFromFavByProductId);
+favRouter.delete("/", authentication, removeFromFavByProductId);
+
 module.exports = favRouter;

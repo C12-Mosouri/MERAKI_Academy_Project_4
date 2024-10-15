@@ -27,15 +27,15 @@ const Fav = () => {
     <>
       <div>My Fav</div>
       {fav.map((ele) => {
-        // console.log(ele.productId);
+        console.log(ele.productId[0]);
         return (
           <>
             <div>
-              <h1>{ele.productId.name}</h1>
-              <img className="img" src={ele.productId.img} />
-              <h2>{"Price : " + ele.productId.price + " JOD"}</h2>
-              <h2>{"Size :" + ele.productId.size}</h2>
-              <h2>{"Rate : " + ele.productId.rate}</h2>
+              <h1>{ele.productId[0].name}</h1>
+              <img className="img" src={ele.productId[0].img} />
+              <h2>{"Price : " + ele.productId[0].price + " JOD"}</h2>
+              <h2>{"Size :" + ele.productId[0].size}</h2>
+              <h2>{"Rate : " + ele.productId[0].rate}</h2>
               <button
                 onClick={() => {
                   setFavId(ele._id);

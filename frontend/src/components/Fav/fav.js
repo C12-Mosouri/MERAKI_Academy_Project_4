@@ -40,12 +40,18 @@ const Fav = () => {
                 onClick={() => {
                   setFavId(ele._id);
                   console.log(ele._id);
-                  const favId1 = { favId };
+
                   axios
-                    .delete(`http://localhost:5000/fav`, favId1)
+                    .delete(`http://localhost:5000/fav`, {
+                      data: { favId: ele._id },
+                    })
                     .then((res) => {
                       console.log(res);
-                      setFav("");
+                      setFav(
+                        fav.filter((elem) => {
+                          return elem._id !== ele._id;
+                        })
+                      );
                     })
                     .catch((err) => {
                       console.log(err);

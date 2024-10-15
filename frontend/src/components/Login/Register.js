@@ -16,11 +16,11 @@ const Register = () => {
 
   return (
     <div className="register">
-      <div>Register</div>
+      <h1>Register</h1>
       <br></br>
       <input
         type="text"
-        placeholder="First Name"
+        placeholder="First Name *"
         onChange={(e) => {
           setFirstName(e.target.value);
         }}
@@ -28,7 +28,7 @@ const Register = () => {
       <br></br>
       <input
         type="text"
-        placeholder="Last Name"
+        placeholder="Last Name *"
         onChange={(e) => {
           setLastName(e.target.value);
         }}
@@ -36,7 +36,7 @@ const Register = () => {
       <br></br>
       <input
         type="number"
-        placeholder="Age"
+        placeholder="Age *"
         onChange={(e) => {
           setAge(e.target.value);
         }}
@@ -44,7 +44,7 @@ const Register = () => {
       <br></br>
       <input
         type="text"
-        placeholder="Country"
+        placeholder="Country *"
         onChange={(e) => {
           setCountry(e.target.value);
         }}
@@ -52,7 +52,7 @@ const Register = () => {
       <br></br>
       <input
         type="email"
-        placeholder="Email"
+        placeholder="Email *"
         onChange={(e) => {
           setEmail(e.target.value);
         }}
@@ -60,7 +60,7 @@ const Register = () => {
       <br></br>
       <input
         type="password"
-        placeholder="Password"
+        placeholder="Password *"
         onChange={(e) => {
           setPassword(e.target.value);
         }}

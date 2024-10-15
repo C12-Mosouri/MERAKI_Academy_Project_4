@@ -48,7 +48,8 @@ const getAllMyFav = (req, res) => {
     });
 };
 const removeFromFavByProductId = (req, res) => {
-  const { favId } = req.body
+  const { favId } = req.body;
+  console.log(req.body);
   favModel
     .findByIdAndDelete({ _id: favId }, { new: true })
     .then((result) => {
@@ -67,4 +68,31 @@ const removeFromFavByProductId = (req, res) => {
       });
     });
 };
-module.exports = { createFav, getAllMyFav, removeFromFavByProductId };
+
+/* const getFavByUserId = (req, res) => {
+  const { userId } = req.token.userId;
+  favModel
+    .find({})
+    .populate("productId userId")
+    // .populate("userId","-role")
+    .exec()
+    .then((result) => {
+      res.status(200).json({
+        success: true,
+        message: "All MyFav Are Here",
+        Category: result,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: "Server Error",
+        err: err.message,
+      });
+    });
+}; */
+module.exports = {
+  createFav,
+  getAllMyFav,
+  removeFromFavByProductId,
+};

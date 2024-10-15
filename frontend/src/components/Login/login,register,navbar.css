@@ -3,6 +3,8 @@
     width: fit-content;
     padding: 50px;
     margin: auto;
+    margin-bottom: 10px;
+
 }
 .login{
     border: 5px red solid;

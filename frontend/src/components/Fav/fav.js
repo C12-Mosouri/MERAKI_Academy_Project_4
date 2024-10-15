@@ -11,12 +11,12 @@ const Fav = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/fav/${userId}`, {
+      .get(`http://localhost:5000/fav`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        console.log(res.data.Category);
-        setFav(res.data.Category);
+        console.log(res.data.Product.productId);
+        setFav(res.data.Product.productId);
       })
       .catch((err) => {
         console.log(err);
@@ -27,15 +27,15 @@ const Fav = () => {
     <>
       <div>My Fav</div>
       {fav.map((ele) => {
-        console.log(ele.productId[0]);
+        console.log(ele);
         return (
           <>
             <div>
-              <h1>{ele.productId[0].name}</h1>
-              <img className="img" src={ele.productId[0].img} />
-              <h2>{"Price : " + ele.productId[0].price + " JOD"}</h2>
-              <h2>{"Size :" + ele.productId[0].size}</h2>
-              <h2>{"Rate : " + ele.productId[0].rate}</h2>
+              <h1>{ele.name}</h1>
+              <img className="img" src={ele.img} />
+              <h2>{"Price : " + ele.price + " JOD"}</h2>
+              <h2>{"Size :" + ele.size}</h2>
+              <h2>{"Rate : " + ele.rate}</h2>
               <button
                 onClick={() => {
                   setFavId(ele._id);

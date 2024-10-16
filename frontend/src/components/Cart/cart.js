@@ -11,8 +11,8 @@ const Cart = () => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        console.log(res.data.Category);
-        setCart(res.data.Category);
+        console.log(res.data);
+        setCart(res.data);
       })
       .catch((err) => {
         console.log(err);

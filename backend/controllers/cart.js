@@ -45,4 +45,29 @@ const getAllMyCart = (req, res) => {
       });
     });
 };
-module.exports = { createCart, getAllMyCart };
+
+const getCartByUserId = (req, res) => {
+  const userId = req.token.userId;
+  console.log(userId);
+  CartModel.find({ userId: userId })
+    .populate("productId userId")
+    // .populate("userId","-role")
+    .exec()
+    .then((result) => {
+      // favModel.findByIdAndUpdate()
+      res.status(200).json({
+        success: true,
+        message: "All MyCart Are Ready",
+        Product: result,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: "Server Error",
+        err: err.message,
+      });
+    });
+};
+
+module.exports = { createCart, getAllMyCart, getCartByUserId };

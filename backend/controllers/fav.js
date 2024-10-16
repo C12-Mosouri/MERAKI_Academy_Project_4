@@ -74,7 +74,7 @@ const getFavByUserId = (req, res) => {
   const userId = req.token.userId;
   console.log(userId);
   favModel
-    .findOne({ userId: userId })
+    .find({ userId: userId })
     .populate("productId userId")
     // .populate("userId","-role")
     .exec()

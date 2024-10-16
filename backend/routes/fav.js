@@ -9,8 +9,8 @@ const authentication = require("../middleware/authentication");
 const favRouter = express.Router();
 
 favRouter.post("/", authentication, createFav);
-favRouter.get("/myfav", authentication, getAllMyFav);
+favRouter.get("/allfav", authentication, getAllMyFav);
 favRouter.get("/", authentication, getFavByUserId);
-favRouter.delete("/",  removeFromFavByProductId);
+favRouter.delete("/", removeFromFavByProductId);
 
 module.exports = favRouter;

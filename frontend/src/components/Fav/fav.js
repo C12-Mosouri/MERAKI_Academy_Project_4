@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 
 const Fav = () => {
   const [fav, setFav] = useState([]);
-  const [favId, setFavId] = useState("");
+  const [favId, setFavId] = useState([]);
   const { token, userId } = useContext(tokenContext);
   // const { id } = useParams();
 

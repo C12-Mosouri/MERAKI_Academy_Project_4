@@ -50,11 +50,9 @@ const getCartByUserId = (req, res) => {
   const userId = req.token.userId;
   console.log(userId);
   CartModel.find({ userId: userId })
-    .populate("productId userId")
-    // .populate("userId","-role")
+    .populate("product userId")
     .exec()
     .then((result) => {
-      // favModel.findByIdAndUpdate()
       res.status(200).json({
         success: true,
         message: "All MyCart Are Ready",

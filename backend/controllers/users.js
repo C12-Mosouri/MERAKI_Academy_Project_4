@@ -1,6 +1,7 @@
 const usersModel = require("../models/user");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const { findById } = require("../models/product");
 
 const register = (req, res) => {
   const { firstName, lastName, age, country, email, password } = req.body;
@@ -115,9 +116,31 @@ const getUserInfo = (req, res) => {
       });
     });
 };
+const getUserById = (req, res) => {
+  const userId = req.token.userId;
+  usersModel
+    .findById(userId)
+    .then((result) => {
+      console.log(result);
+      res.status(202).json({
+        success: true,
+        message: `Users Info`,
+        result: result,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({
+        success: false,
+        message: "Server Error",
+        err: err.message,
+      });
+    });
+};
 
 module.exports = {
   register,
   login,
   getUserInfo,
+  getUserById,
 };

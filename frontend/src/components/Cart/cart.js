@@ -37,7 +37,7 @@ const Cart = () => {
   return (
     <>
       <div>My Cart</div>
-      {/* {cart.map((ele) => {
+      {cart.map((ele) => {
         console.log(ele.product[0].productId);
         const productIdAfterMap = ele.product[0].productId;
 
@@ -51,13 +51,13 @@ const Cart = () => {
             <button>Remove From My Cart</button>
           </>
         );
-      })} */}
-      <h1>{cart2.name}</h1>
+      })} 
+    {/*   <h1>{cart2.name}</h1>
       <img className="img" src={cart2.img} />
       <h2>{"Price : " + cart2.price + " JOD"}</h2>
       <h2>{"Size :" + cart2.size}</h2>
       <h2>{"Rate : " + cart2.rate}</h2>
-      <button>Remove From My Cart</button>
+      <button>Remove From My Cart</button> */}
     </>
   );
 };

@@ -50,7 +50,7 @@ const getCartByUserId = (req, res) => {
   const userId = req.token.userId;
   console.log(userId);
   CartModel.find({ userId: userId })
-    .populate("product userId")
+    .populate("product").populate("product.productId")
     .exec()
     .then((result) => {
       res.status(200).json({

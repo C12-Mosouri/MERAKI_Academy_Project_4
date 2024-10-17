@@ -18,6 +18,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Navbars from "./components/Login/Navbar";
+import Profile from "./components/Profile/profile";
 export const tokenContext = createContext();
 
 const App = () => {
@@ -29,7 +30,7 @@ const App = () => {
   return (
     <>
       <Navbars />
-      
+
       {/* <Button variant="primary">Click Me</Button> */}
       <tokenContext.Provider value={{ token, setToken, userId, setUserId }}>
         <div className="App">
@@ -43,6 +44,7 @@ const App = () => {
             <Route path="/product/:id" element={<Product />} />
             <Route path="/fav" element={<Fav />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/myprofile" element={<Profile />} />
           </Routes>
         </div>
       </tokenContext.Provider>

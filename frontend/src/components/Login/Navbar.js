@@ -141,7 +141,7 @@ const Navbars = () => {
                       navigate("/cart");
                     }}
                     xmlns="http://www.w3.org/2000/svg"
-                    width="40"
+                    width="30"
                     height="30"
                     fill="currentColor"
                     class="bi bi-cart4"
@@ -153,7 +153,7 @@ const Navbars = () => {
                     onClick={() => {
                       {
                         localStorage.getItem("token")
-                          ? navigate("/home")
+                          ? navigate("/myprofile")
                           : navigate("/login");
                       }
                     }}

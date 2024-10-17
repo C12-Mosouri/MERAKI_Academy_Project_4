@@ -67,6 +67,10 @@ const Login = () => {
           <h1>
             {message}
             {navigate("/category")}
+            {setTimeout(() => {
+              localStorage.removeItem("token");
+              navigate("/login");
+            }, 7200000)}
           </h1>
         ) : (
           <h1>{message}</h1>

@@ -11,6 +11,7 @@ const Product = () => {
   const { id } = useParams();
   const { token, userId } = useContext(tokenContext);
   const [favId, setFavId] = useState("");
+  const [cartId, setCartId] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
     axios
@@ -123,6 +124,8 @@ const Product = () => {
                         )
                         .then((result) => {
                           console.log(result);
+                          console.log(result.data.Category._id)
+                          setCartId(result.data.Category._id);
                         })
                         .catch((err) => {
                           console.log(err);
@@ -142,6 +145,16 @@ const Product = () => {
                     viewBox="0 0 16 16"
                     onClick={() => {
                       setAddToCart(true);
+                      axios
+                        .delete(`http://localhost:5000/cart`, {
+                          data: { cartId: cartId },
+                        })
+                        .then((res) => {
+                          console.log(res);
+                        })
+                        .catch((err) => {
+                          console.log(err);
+                        });
                     }}
                   >
                     <path d="M6.5 7a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1z" />

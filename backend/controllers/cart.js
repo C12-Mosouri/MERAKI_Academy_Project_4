@@ -84,4 +84,24 @@ const getCartByUserId = (req, res) => {
     });
 };
 
-module.exports = { createCart, getAllMyCart, getCartByUserId };
+const removeByCartId = (req, res) => {
+  const { cartId } = req.body;
+  console.log(req.body);
+  CartModel.findOneAndDelete({ _id: cartId }, { new: true })
+    .then((result) => {
+      console.log(result);
+      res.status(200).json({
+        success: true,
+        message: "Product Removed",
+        result: result,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: `Server Error`,
+        err: err.message,
+      });
+    });
+};
+module.exports = { createCart, getAllMyCart, getCartByUserId, removeByCartId };

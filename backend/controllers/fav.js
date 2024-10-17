@@ -48,7 +48,7 @@ const getAllMyFav = (req, res) => {
       });
     });
 };
-const removeFromFavByProductId = (req, res) => {
+const removeByFavId = (req, res) => {
   const { favId } = req.body;
   console.log(req.body);
   favModel
@@ -97,6 +97,6 @@ const getFavByUserId = (req, res) => {
 module.exports = {
   createFav,
   getAllMyFav,
-  removeFromFavByProductId,
+  removeByFavId,
   getFavByUserId,
 };

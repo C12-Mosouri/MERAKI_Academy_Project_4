@@ -14,20 +14,6 @@ const Cart = () => {
       .then((res) => {
         console.log(res.data.Product);
         setCart(res.data.Product);
-        cart.map((ele) => {
-          console.log(ele.product[0].productId);
-          axios
-            .get(
-              `http://localhost:5000/product/${ele.product[0].productId}/productId`
-            )
-            .then((ress) => {
-              console.log(ress.data.result);
-              setCart2(ress.data.result);
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-        });
       })
       .catch((err) => {
         console.log(err);
@@ -38,6 +24,14 @@ const Cart = () => {
     <>
       <div>My Cart</div>
       {cart.map((ele) => {
+        console.log(ele.product[0]);
+        return (
+          <>
+            <h1></h1>
+          </>
+        );
+      })}
+        {cart.map((ele) => {
         console.log(ele.product[0].productId);
         const productIdAfterMap = ele.product[0].productId;
 
@@ -51,8 +45,8 @@ const Cart = () => {
             <button>Remove From My Cart</button>
           </>
         );
-      })} 
-    {/*   <h1>{cart2.name}</h1>
+      })}  
+      {/*   <h1>{cart2.name}</h1>
       <img className="img" src={cart2.img} />
       <h2>{"Price : " + cart2.price + " JOD"}</h2>
       <h2>{"Size :" + cart2.size}</h2>

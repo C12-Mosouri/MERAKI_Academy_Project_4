@@ -6,23 +6,38 @@ const createCart = (req, res) => {
   const newCart = new CartModel({
     product,
     userId,
+    quantity: 1,
   });
-  newCart
-    .save()
-    // .populate("productId")
+  CartModel.findOne(product)
     .then((result) => {
-      res.status(200).json({
-        success: true,
-        message: "The Product Added To Cart Successfully",
-        Category: result,
-      });
+      if (result) {
+        console.log(result);
+        quantity++;
+      } else {
+        // findone (id product ) {} or null
+        // if return {} => Q+1
+        // null .save()
+        newCart
+          .save()
+          // .populate("productId")
+          .then((result) => {
+            res.status(200).json({
+              success: true,
+              message: "The Product Added To Cart Successfully",
+              Category: result,
+            });
+          })
+          .catch((err) => {
+            res.status(500).json({
+              success: false,
+              message: "Server Error",
+              err: err.message,
+            });
+          });
+      }
     })
     .catch((err) => {
-      res.status(500).json({
-        success: false,
-        message: "Server Error",
-        err: err.message,
-      });
+      console.log(err);
     });
 };
 const getAllMyCart = (req, res) => {
@@ -50,7 +65,8 @@ const getCartByUserId = (req, res) => {
   const userId = req.token.userId;
   console.log(userId);
   CartModel.find({ userId: userId })
-    .populate("product").populate("product.productId")
+    .populate("product")
+    .populate("product.productId")
     .exec()
     .then((result) => {
       res.status(200).json({

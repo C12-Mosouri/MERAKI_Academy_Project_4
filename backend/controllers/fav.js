@@ -52,7 +52,7 @@ const removeFromFavByProductId = (req, res) => {
   const { favId } = req.body;
   console.log(req.body);
   favModel
-    .findByIdAndDelete({ _id: favId }, { new: true })
+    .findOneAndDelete({ _id: favId }, { new: true })
     .then((result) => {
       console.log(result);
       res.status(200).json({

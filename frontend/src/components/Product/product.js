@@ -10,6 +10,7 @@ const Product = () => {
   const [addToCart, setAddToCart] = useState(true);
   const { id } = useParams();
   const { token, userId } = useContext(tokenContext);
+  const [favId, setFavId] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
     axios
@@ -58,6 +59,7 @@ const Product = () => {
                         )
                         .then((result) => {
                           console.log(result);
+                          setFavId(result.data.Category._id);
                           setAddToFav(result.data.Category._id);
                         })
                         .catch((err) => {
@@ -75,14 +77,14 @@ const Product = () => {
                     fill="currentColor"
                     class="bi bi-heart-fill"
                     viewBox="0 0 16 16"
-                    id={ele._id}
+                    // id={ele._id}
                     onClick={(e) => {
                       setAdd(true);
                       console.log(e.target.id);
                       console.log(ele);
                       axios
                         .delete(`http://localhost:5000/fav`, {
-                          data: { favId: ele._id },
+                          data: { favId: favId },
                         })
                         .then((res) => {
                           console.log(res);
@@ -110,13 +112,13 @@ const Product = () => {
                     onClick={() => {
                       console.log(token);
                       const productId = ele._id;
-                      const quantity = 0;
+                      const quantity = 1;
                       const product = { productId, quantity };
                       setAddToCart(false);
                       axios
                         .post(
                           `http://localhost:5000/cart`,
-                          { product },
+                          { product, quantity },
                           { headers: { Authorization: `Bearer ${token}` } }
                         )
                         .then((result) => {

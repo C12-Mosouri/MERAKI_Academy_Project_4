@@ -26,19 +26,33 @@ const Category = () => {
       {category.map((ele, i) => {
         return (
           <>
-            <h1
+            <div
+              className="category-container"
               onClick={() => {
                 const id = ele._id;
                 setCategoryId(ele._id);
                 navigate(`/category/sub/${id}`);
               }}
             >
-              {ele.name}
-            </h1>
-            <img className="img" src={ele.img} />
+              <div className="category-card">
+                <img src={ele.img} />
+                <h3>{ele.name}</h3>
+              </div>
+            </div>
+            
           </>
         );
       })}
+      <div className="category-container">
+        <div className="category-card">
+          
+          <img
+            src="https://i.pinimg.com/736x/10/a3/6b/10a36b66475f91e4ca658f276ae6037f.jpg"
+            alt="Football Category"
+          />
+          <h3>Football</h3>
+        </div>
+      </div>
     </>
   );
 };

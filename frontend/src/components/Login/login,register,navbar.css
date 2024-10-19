@@ -1,5 +1,5 @@
-.register{
-    border: 5px red solid;
+ .register{
+    /* border: 5px red solid; */
     width: fit-content;
     padding: 50px;
     margin: auto;
@@ -7,12 +7,79 @@
 
 }
 .login{
-    border: 5px red solid;
+    /* border: 5px red solid; */
     width: fit-content;
     padding: 50px;
     margin: auto;
     margin-bottom: 10px;
-}
+} 
 .cart{
     justify-content: end;
+}
+body {
+    background-color: #e9ecef;
+    font-family: 'Arial', sans-serif;
+}
+
+.login {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    margin: 100px auto;
+    text-align: center;
+    border: 2px solid #28a745; /* Sporty border */
+}
+
+h1 {
+    color: #28a745; /* Sporty green */
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 2px solid #28a745; /* Sporty border */
+    border-radius: 10px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #007bff; /* Blue on focus */
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background-color: #28a745; /* Sporty green */
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+h6 {
+    margin-top: 1rem;
+    color: #555;
+}
+
+h6 a {
+    color: #007bff; /* Blue link color */
+    text-decoration: none;
+}
+
+h6 a:hover {
+    text-decoration: underline;
 }

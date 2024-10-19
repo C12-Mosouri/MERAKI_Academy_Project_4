@@ -20,6 +20,7 @@ const Product = () => {
   const [favId, setFavId] = useState("");
   const [cartId, setCartId] = useState("");
   const navigate = useNavigate();
+  const [isAdd,setIsAdd]=useState(false)
   useEffect(() => {
     // console.log(id);
     axios
@@ -34,9 +35,9 @@ const Product = () => {
   }, []);
   return (
     <>
-      <div>product</div>
+      {/* <div>product</div> */}
       {product.map((ele, i) => {
-        console.log(ele._id);
+        // console.log(ele._id);
         return (
           <>
             {localStorage.getItem("token") ? (

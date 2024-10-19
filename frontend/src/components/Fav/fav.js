@@ -7,6 +7,7 @@ const Fav = () => {
   const [fav, setFav] = useState([]);
   const [addToCart, setAddToCart] = useState(true);
   const [favId, setFavId] = useState([]);
+  const [cartId, setCartId] = useState([]);
   const [add, setAdd] = useState(false);
   const { token, userId } = useContext(tokenContext);
   // const { id } = useParams();
@@ -89,8 +90,12 @@ const Fav = () => {
                     axios
                       .post(
                         `http://localhost:5000/cart`,
-                        { product },
-                        { headers: { Authorization: `Bearer ${token}` } }
+                        { product, quantity },
+                        {
+                          headers: {
+                            Authorization: `Bearer ${token}`,
+                          },
+                        }
                       )
                       .then((result) => {
                         console.log(result);

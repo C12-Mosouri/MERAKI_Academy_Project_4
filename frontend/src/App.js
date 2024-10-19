@@ -9,6 +9,7 @@ import Product from "./components/Product/product";
 import Fav from "./components/Fav/fav";
 import Cart from "./components/Cart/cart";
 import Home from "./components/Home/home";
+import Order from "./components/Order/order"
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
@@ -46,6 +47,7 @@ const App = () => {
             <Route path="/fav" element={<Fav />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/myprofile" element={<Profile />} />
+            <Route path="/order" element={<Order />} />
           </Routes>
         </div>
       </tokenContext.Provider>

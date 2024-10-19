@@ -55,6 +55,7 @@ const Product = () => {
                             <h2>{ele.price + " : JOD"}</h2>
                             <h3>{"Size : " + ele.size}</h3>
                             <h3>{"Rate : " + ele.rate}</h3>
+                            <h3>{"Color : " + ele.color}</h3>
                             {add ? (
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -214,6 +215,7 @@ const Product = () => {
                               <h2>{ele.price + " : JOD"}</h2>
                               <h3>{"Size : " + ele.size}</h3>
                               <h3>{"Rate : " + ele.rate}</h3>
+                              <h3>{"Color : " + ele.color}</h3>
 
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -260,7 +262,6 @@ const Product = () => {
                     </Row>
                   </Container>
                 </>
-               
               </>
             )}
           </>

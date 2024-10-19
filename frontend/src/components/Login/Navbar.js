@@ -123,7 +123,11 @@ const Navbars = () => {
                   </Form>
                   <svg
                     onClick={() => {
-                      navigate("/fav");
+                      {
+                        localStorage.getItem("token")
+                          ? navigate("/fav")
+                          : navigate("/login");
+                      }
                     }}
                     xmlns="http://www.w3.org/2000/svg"
                     width="40"
@@ -138,7 +142,11 @@ const Navbars = () => {
                   <svg
                     className="cart"
                     onClick={() => {
-                      navigate("/cart");
+                      {
+                        localStorage.getItem("token")
+                          ? navigate("/cart")
+                          : navigate("/login");
+                      }
                     }}
                     xmlns="http://www.w3.org/2000/svg"
                     width="30"

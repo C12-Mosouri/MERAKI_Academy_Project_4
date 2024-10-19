@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import "./subcategory.css";
 
 const SubCategorys = () => {
   const navigate = useNavigate();

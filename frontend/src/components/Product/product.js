@@ -14,6 +14,7 @@ const Product = () => {
   const [cartId, setCartId] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
+    // console.log(id);
     axios
       .get(`http://localhost:5000/product/${id}`)
       .then((res) => {

@@ -39,13 +39,11 @@ const Category = () => {
                 <h3>{ele.name}</h3>
               </div>
             </div>
-            
           </>
         );
       })}
       <div className="category-container">
         <div className="category-card">
-          
           <img
             src="https://i.pinimg.com/736x/10/a3/6b/10a36b66475f91e4ca658f276ae6037f.jpg"
             alt="Football Category"
@@ -53,6 +51,7 @@ const Category = () => {
           <h3>Football</h3>
         </div>
       </div>
+      
     </>
   );
 };

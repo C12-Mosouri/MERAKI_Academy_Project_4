@@ -51,24 +51,6 @@ const Navbars = () => {
                     >
                       Home
                     </Nav.Link>
-                    {token ? (
-                      <Nav.Link
-                        onClick={() => {
-                          localStorage.removeItem("token");
-                          navigate("/login");
-                        }}
-                      >
-                        Log Out
-                      </Nav.Link>
-                    ) : (
-                      <Nav.Link
-                        onClick={() => {
-                          navigate("/login");
-                        }}
-                      >
-                        Login
-                      </Nav.Link>
-                    )}
                     <Nav.Link
                       onClick={() => {
                         navigate("/category");

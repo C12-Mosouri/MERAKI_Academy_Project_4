@@ -1,13 +1,16 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { tokenContext } from "../../App";
+import "./order.css"
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { useNavigate } from "react-router-dom";
 
 const Order = () => {
+  const navigate = useNavigate()
   const { token, userId } = useContext(tokenContext);
   const [order, setOrder] = useState([]);
   let price = 0;
@@ -63,7 +66,9 @@ const Order = () => {
       })}
       <br></br>
       {
-        <Button variant="primary" onClick={() => {}}>
+        <Button variant="success" className="order" onClick={() => {
+          navigate("/payment")
+        }}>
           Ready To Deliver
         </Button>
       }

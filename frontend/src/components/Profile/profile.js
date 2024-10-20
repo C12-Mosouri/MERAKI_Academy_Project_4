@@ -6,6 +6,7 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
+import "./profile.css";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ const Profile = () => {
   return (
     <>
       <div>My Profile</div>
-      <Form>
+      <Form className="text">
         <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
           <Form.Label column sm="2">
             Email
@@ -38,12 +39,18 @@ const Profile = () => {
           </Col>
         </Form.Group>
 
-        <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+        <Form.Group
+          as={Row}
+          className="mb-3"
+          controlId="formPlaintextFirstName"
+        >
           <Form.Label column sm="2">
             FirstName
           </Form.Label>
           <Col sm="10">
             <Form.Control
+              plaintext
+              readOnly
               type="text"
               placeholder="My First Name"
               defaultValue={myInfo.firstName}
@@ -56,6 +63,8 @@ const Profile = () => {
           </Form.Label>
           <Col sm="10">
             <Form.Control
+              plaintext
+              readOnly
               type="text"
               placeholder="My last Name"
               defaultValue={myInfo.lastName}
@@ -68,6 +77,8 @@ const Profile = () => {
           </Form.Label>
           <Col sm="10">
             <Form.Control
+              plaintext
+              readOnly
               type="text"
               placeholder="My Country"
               defaultValue={myInfo.country}
@@ -80,6 +91,8 @@ const Profile = () => {
           </Form.Label>
           <Col sm="10">
             <Form.Control
+              plaintext
+              readOnly
               type="text"
               placeholder="My Age"
               defaultValue={myInfo.age}

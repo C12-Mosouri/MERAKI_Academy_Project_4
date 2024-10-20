@@ -6,3 +6,20 @@
     height: 200px;
     width: 250px;
 }
+.logo-header{
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+}
+.logo-header h1{
+    font-family: "Arial",sans-serif;
+    font-size: 3rem;
+    color: blue;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin: 0;
+}
+.logo-header .highlight{
+    color:black;
+    font-style: italic;
+}

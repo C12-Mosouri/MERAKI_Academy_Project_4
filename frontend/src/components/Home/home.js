@@ -24,7 +24,16 @@ const Home = () => {
   }, []);
   return (
     <>
-      <div>home</div>
+    <header className="logo-header">
+
+      <h1>SouriSport</h1>
+        <br></br> 
+         <span className="highlight">
+       <h2>
+        Where Athletes Find Their Winning Edge
+        </h2>
+         </span> 
+    </header>
       <Carousel slide={false}>
         <Carousel.Item>
           <img

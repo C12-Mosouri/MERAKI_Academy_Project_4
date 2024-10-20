@@ -20,7 +20,9 @@ const Product = () => {
   const [favId, setFavId] = useState("");
   const [cartId, setCartId] = useState("");
   const navigate = useNavigate();
-  const [isAdd,setIsAdd]=useState(false)
+  const [isAdd, setIsAdd] = useState({});
+  const [isAddToCard, setIsAddToCard] = useState({});
+
   useEffect(() => {
     // console.log(id);
     axios
@@ -57,7 +59,7 @@ const Product = () => {
                             <h3>{"Size : " + ele.size}</h3>
                             <h3>{"Rate : " + ele.rate}</h3>
                             <h3>{"Color : " + ele.color}</h3>
-                            {add ? (
+                            {!isAdd[ele._id] ? (
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="40"
@@ -68,7 +70,12 @@ const Product = () => {
                                 className={i}
                                 key={ele._id}
                                 onClick={() => {
-                                  setAdd(false);
+                                  // setAdd(false);
+                                  setIsAdd((product) => ({
+                                    ...product,
+                                    [ele._id]: true,
+                                  }));
+
                                   console.log(token);
                                   const productId = ele._id;
                                   axios
@@ -103,9 +110,14 @@ const Product = () => {
                                 viewBox="0 0 16 16"
                                 // id={ele._id}
                                 onClick={(e) => {
-                                  setAdd(true);
+                                  // setAdd(true);
+
                                   console.log(e.target.id);
                                   console.log(ele);
+                                  setIsAdd((product) => ({
+                                    ...product,
+                                    [ele._id]: false,
+                                  }));
                                   axios
                                     .delete(`http://localhost:5000/fav`, {
                                       data: { favId: favId },
@@ -124,7 +136,7 @@ const Product = () => {
                                 />
                               </svg>
                             )}
-                            {addToCart ? (
+                            {!isAddToCard[ele._id] ? (
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="40"
@@ -137,7 +149,11 @@ const Product = () => {
                                   const productId = ele._id;
                                   const quantity = 1;
                                   const product = { productId, quantity };
-                                  setAddToCart(false);
+                                  /* setAddToCart(false); */
+                                  setIsAddToCard((product) => ({
+                                    ...product,
+                                    [ele._id]: true,
+                                  }));
                                   axios
                                     .post(
                                       `http://localhost:5000/cart`,
@@ -170,7 +186,11 @@ const Product = () => {
                                 class="bi bi-cart-dash"
                                 viewBox="0 0 16 16"
                                 onClick={() => {
-                                  setAddToCart(true);
+                                  // setAddToCart(true);
+                                  setIsAddToCard((product) => ({
+                                    ...product,
+                                    [ele._id]: false,
+                                  }));
                                   axios
                                     .delete(`http://localhost:5000/cart`, {
                                       data: { cartId: cartId },
@@ -200,7 +220,7 @@ const Product = () => {
                 <>
                   <Container
                     className="d-flex justify-content-center align-items-center"
-                    style={{ height: "80vh" }}
+                    style={{ height: "85vh" }}
                   >
                     <Row>
                       <Col md="auto">
